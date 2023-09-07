@@ -1,110 +1,61 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import SidebarContent from './SidebarContent';
-import { AppBar, IconButton, styled, Toolbar, Typography } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faBars } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { useProSidebar } from 'react-pro-sidebar';
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-const drawerWidth = 240;
+export const SlideBar =() =>{
+  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl, } = useProSidebar();
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
-
-function ResponsiveDrawer(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(true);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const toggle = () => {
+    toggleSidebar();
+    if (toggled) {
+      console.log(true);
+      collapseSidebar();
+    } else {
+      console.log(false);
+      collapseSidebar();
+    }
   };
-
-  const container = window !== undefined ? () => window().document.body : undefined;
-
-
-  const onLogout = () => {
-  }
-
-  const location = useLocation();
-
-  React.useEffect(() => {
-    setMobileOpen(true)
-  }, [location]);
-
-  return (
-    <Box
-      component="nav"
-      sx={{ display: 'flex' }}
-    >
-      <AppBar component="nav" sx={{ backgroundColor: '#000' }}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ display: { sm: 'flex' } }}
+  return(
+    <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
+        <Sidebar 
+         breakPoint="sm"
+         transitionDuration={800}
+        backgroundColor="rgb(0, 249, 249)"
+        rtl={false}
+        style={{ height: "100vh" }}
+        >
+        <Menu>
+          <MenuItem
+            icon={<MenuOutlinedIcon />}
+            onClick={() => {
+              collapseSidebar();
+            }}
+            style={{ textAlign: "center" }}
           >
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerToggle}
-              edge="start"
-              sx={{}}
-            >
-              <FontAwesomeIcon icon={faBars} style={{ color: '#ff8355', fontSize: 30 }} />
-            </IconButton>
-          </Typography>
-          <Box sx={{ marginLeft: 'auto', display: 'flex', justifyContent: 'space-between' }}>
-            <NavLink
-              className={'nav-item'}
-              to={'#'}
-              onClick={onLogout}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              Logout
-            </NavLink>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        container={container}
-        variant="persistent"
-        open={!mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        className="drawerSidebar"
-        PaperProps={{
-          sx: {
-            backgroundColor: "#313131",
-            color: "#fff",
-          }
-        }}
-        sx={{
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-        }}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerToggle}>
-            <FontAwesomeIcon icon={faAngleLeft} style={{ color: '#ff8355', fontSize: 30 }} />
-          </IconButton>
-        </DrawerHeader>
-        <SidebarContent />
-      </Drawer>
-    </Box>
-  );
+            {" "}
+            <h2>Admin</h2>
+          </MenuItem>
+          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
+          <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
+          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
+          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>  
+        </Menu>
+    </Sidebar>
+        <main>
+        <h1 style={{  marginLeft: "5rem" }}>
+          React-Pro-Sidebar
+        </h1>
+        
+      </main>
+
+    </div>
+  )
 }
-
-ResponsiveDrawer.propTypes = {
-  window: PropTypes.func,
-};
-
-export default ResponsiveDrawer;

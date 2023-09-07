@@ -29,7 +29,7 @@ function Login() {
     };
      const navigate = useNavigate()
     const login = ()=>{
-        // navigate('/login')
+        navigate('/')
     }
   return (
     <div style={{height:'100%'}}>

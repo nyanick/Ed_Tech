@@ -19,7 +19,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import { useNavigate } from 'react-router-dom';
 let image = require('../../assets/images/signup-image.jpg')
 
-function AdminSignUp() {
+function Home() {
 
   const Navigate = useNavigate()
     const [showPassword, setShowPassword] = React.useState(false);
@@ -121,4 +121,4 @@ function AdminSignUp() {
   )
 }
 
-export default AdminSignUp
+export default Home
