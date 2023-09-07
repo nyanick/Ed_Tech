@@ -105,7 +105,7 @@ function AdminSignUp() {
                     onClick={toLogin}
                     variant="contained">Login</Button>
                 </Stack>
-                    <Box sx={{marginLeft:29,marginTop:3}}>
+                    <Box sx={{marginTop:3}}>
                         <TModalSignUp/>
                     </Box>
                 </Grid>

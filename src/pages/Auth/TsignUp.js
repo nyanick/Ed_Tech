@@ -142,10 +142,12 @@ function TeacherSignUp() {
                     onClick={toLogin}
                     variant="contained">Create Account</Button>
                 </Stack>
-                    <Typography sx={{textAlign:'center',paddingTop:2,fontSize:20}}>Login</Typography>
-                </Grid>
+                <Stack spacing={2} ml={5} mr={5} >
+                    <Button onClick={toLogin} sx={{textAlign:'center',paddingTop:2,fontSize:20}} >login</Button>
+                </Stack>
+                 </Grid>
                 <Grid item sx={12} md={6} xs={12} justifyContent={'center'} >
-                    <img alt='nothing her' src={image} style={{display:'flex',marginLeft:'auto',marginRight:'auto',height:500}}/>
+                    <img alt='nothing her' src={image} style={{display:'flex',marginLeft:'auto',marginRight:'auto'}}/>
                 {/* <Link>Create An Account</L> */}
                 <Typography style={{textAlign:'center',marginTop:10}}> Create An Account</Typography>
                 </Grid>

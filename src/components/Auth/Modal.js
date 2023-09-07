@@ -37,7 +37,10 @@ export default function TModalSignUp() {
 
   return (
     <div>
-        <Button style={{alignItems:'center'}} onClick={handleOpen}>Create and Account</Button>
+       <Stack spacing={2} ml={5} mr={5} >
+                    <Button onClick={handleOpen} >Create and Account</Button>
+                </Stack>
+        {/* <Button style={{alignItems:'center'}} onClick={handleOpen}>Create and Account</Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

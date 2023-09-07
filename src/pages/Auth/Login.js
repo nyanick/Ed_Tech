@@ -83,9 +83,10 @@ function Login() {
                 <Stack spacing={2} ml={5} mr={5} >
                     <Button onClick={login} variant="contained">Login</Button>
                 </Stack>
-                    <Box sx={{marginLeft:29,marginTop:3}}>
+    
+                    
                         <TModalSignUp/>
-                    </Box>
+                    
                 </Grid>
                 <Grid item sx={12} md={6} xs={12} justifyContent={'center'} >
                     <img alt='nothing her' src={image} style={{display:'flex',marginLeft:'auto',marginRight:'auto',}}/>
