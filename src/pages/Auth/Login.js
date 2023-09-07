@@ -13,7 +13,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';import { Link } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';import { Link, useNavigate } from 'react-router-dom';
 import TModalSignUp from '../../components/Auth/Modal';
 ;
 
@@ -27,6 +27,10 @@ function Login() {
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
+     const navigate = useNavigate()
+    const login = ()=>{
+        // navigate('/login')
+    }
   return (
     <div style={{height:'100%'}}>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>
@@ -77,7 +81,7 @@ function Login() {
 
                     </Box>
                 <Stack spacing={2} ml={5} mr={5} >
-                    <Button variant="contained">Login</Button>
+                    <Button onClick={login} variant="contained">Login</Button>
                 </Stack>
                     <Box sx={{marginLeft:29,marginTop:3}}>
                         <TModalSignUp/>

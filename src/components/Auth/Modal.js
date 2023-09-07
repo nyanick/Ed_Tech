@@ -6,7 +6,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -24,9 +24,15 @@ export default function TModalSignUp() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+   const navigate = useNavigate()
   const Admin = () =>{
-    
+    navigate("/a-signUp")
+  }
+  const student = () =>{
+    navigate("/s-signUp")
+  }
+  const Teacher = () =>{
+    navigate("/t-signUp")
   }
 
   return (
@@ -51,9 +57,9 @@ export default function TModalSignUp() {
               Sign Up As
             </Typography>
             <Stack spacing={2} ml={5} mr={5} >
-                    <Button variant="contained" To>Admin</Button>
-                    <Button variant="contained">Teacher</Button>
-                    <Button variant="contained">Student</Button>
+                    <Button onClick={Admin} variant="contained" To>Admin</Button>
+                    <Button onClick={Teacher} variant="contained">Teacher</Button>
+                    <Button onClick={student} variant="contained">Student</Button>
                 </Stack>
           </Box>
         </Fade>
