@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import Home from './SubScreens/Home';
 import Courses from './SubScreens/Courses';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from 'react-bootstrap';
 
 function HomePage() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl, } = useProSidebar();
@@ -19,6 +20,10 @@ function HomePage() {
   const [active, setActive] = useState('active')
   const Logout =() =>{
     navigate('/login')
+  }
+  const students = ()=>{
+    navigate('/home')
+    console.log('hommm');
   }
   return (
       <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
@@ -45,7 +50,9 @@ function HomePage() {
             icon={<HomeOutlinedIcon />}>Dashboard</MenuItem>
             <MenuItem onClick={()=>setActive('courses')} icon={<PeopleOutlinedIcon />}>Courses</MenuItem>
             <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+            <MenuItem icon={<ReceiptOutlinedIcon 
+            
+            />}>Profile</MenuItem>
             {/* <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem> */}
             {/* <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>   */}
           </Menu>
@@ -60,6 +67,8 @@ function HomePage() {
           <main style={{  marginLeft: "1rem",padding:10 }}>
           {active === 'active' && <Home/>}
           {active === 'courses' && <Courses/>}
+
+          <Button onClick={students}> Updates</Button>
         </main>
   
       </div>

@@ -1,0 +1,31 @@
+.nav-link{
+    margin-left: 2px;
+    color: #444444;
+}
+.nav-length{
+    min-width: 400px;
+    /* background-color: black; */
+}
+.nav-title{
+    font-size: 18px;
+    text-align: left;
+}
+.nav-title-text{
+    font-size: 14px;
+    /* padding-left: 10px; */
+    padding-top: -5px;
+    display: flex   ;
+   line-height: 20px;
+}
+.nav-items-flex{
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+.nav-title-title{
+    font-size: 23px;
+    /* font-weight: 100%; */
+}
+.nav-items-flex{
+    max-width: 400px;
+    word-break: break-all;
+}
