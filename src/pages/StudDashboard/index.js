@@ -28,13 +28,15 @@ function StudDashboard() {
     <div>
    <IZNavBar/>
     <div className='content'>
-      hekekekekek
+      <div style={{textAlign:'center',fontSize:35,}}>
+        Welcome
+      </div>
     </div>
     <div style={{marginBottom:20}}>
       <Container style={{marginTop:15}} maxWidth='lg'>
         <div style={{marginTop:30,marginBottom:30,paddingBottom:15,paddingTop:40,
           color:'black',fontWeight:'400',fontSize:25
-        }}> {studCources.length} Courses Available </div>
+        }}> {studCources.length} Subjects Registered </div>
         <Grid container spacing={5} rowSpacing={10}>
 
           {studCources.map((item,id)=>(
@@ -43,7 +45,8 @@ function StudDashboard() {
             <CardMedia
                    component="img"
                    alt="green iguana"
-                   height="140"
+                   height="150"
+                    style={{objectFit:'fill'}}
                    image={item.image}
                />
                <CardContent>

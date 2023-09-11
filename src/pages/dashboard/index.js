@@ -53,8 +53,6 @@ function HomePage() {
             <MenuItem icon={<ReceiptOutlinedIcon 
             
             />}>Profile</MenuItem>
-            {/* <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem> */}
-            {/* <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>   */}
           </Menu>
           <div>
             <Menu>

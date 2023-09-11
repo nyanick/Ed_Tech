@@ -40,7 +40,7 @@ function NavBarCollapse (){
                 </Link>
                 <Link href='/' underline="none" color="textPrimary">
                     <MenuItem>
-                        Courses
+                        Subjects
                     </MenuItem>
                 </Link>
             
@@ -72,12 +72,12 @@ function NavBarCollapse (){
                     <Link href='/case-studies' underline="none" color="textPrimary">
                         <ButtonStyledLink color="inherit">           
                             <Typography sx={{ fontWeight: 420}} variant="body1"> 
-                                Courses
+                                Subjects
                             </Typography>
                         </ButtonStyledLink>
                     </Link>
                    
-                    <Link href="/about" underline="none" color="textPrimary">
+                    <Link href="/a-students" underline="none" color="textPrimary">
                         <ButtonStyledLink color="inherit">          
                             <Typography sx={{ fontWeight: 420}} variant="body1"> 
                                 About

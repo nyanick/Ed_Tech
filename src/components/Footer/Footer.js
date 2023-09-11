@@ -77,12 +77,8 @@ export default function Footer(){
                                                     </Link>                       
                                                 </Grid>                                  
                                             </Grid>        
-                                        </Grid>
-                                                                        
-                                                                
+                                        </Grid>                   
                                     </Grid>
-                                  
-                                  
                                 </Grid>    
                                 <br /><br />
                                 <hr class="footerSeparator"/>

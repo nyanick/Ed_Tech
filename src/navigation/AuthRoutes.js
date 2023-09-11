@@ -6,6 +6,7 @@ import Login from '../pages/Auth/Login';
 import AdminSignUp from '../pages/Auth/AdminSignUp';
 import TeacherSignUp from '../pages/Auth/TsignUp';
 import StudentSignUp from '../pages/Auth/StudSignUp';
+import AboutStudents from '../pages/About';
 
 
 export default function AuthRoutes() {
@@ -17,6 +18,7 @@ export default function AuthRoutes() {
             <Route path='s-signUp'element={<StudentSignUp/>} />
             <Route path='/' element={<Dashboard />} />
             <Route path='home' element={<Home />} />
+            <Route path='a-students' element={<AboutStudents />} />
         </Routes>
     )
 }
