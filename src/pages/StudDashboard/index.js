@@ -10,6 +10,7 @@ import { makeStyles } from '@mui/styles';
 import { Carear, studCources } from '../../data';
 import IZNavBar from '../../components/Header/IZNavBar';
 import Footer from '../../components/Footer/Footer';
+import axios from 'axios';
 
    const useStyles = makeStyles({
      card: {
@@ -23,6 +24,22 @@ import Footer from '../../components/Footer/Footer';
 
 function StudDashboard() {
   const classes = useStyles();
+
+  const [data,setData] = React.useState([])
+
+  React.useEffect(()=>{
+    const fetchData = async () => {
+      await axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/course')
+      .then(res=>{
+        console.log(res.data);
+        setData(res.data)
+        console.log(data);
+      }).catch(error=>{
+        console.log("axios aaa",error);
+      })
+    }
+    fetchData()
+  },[])
 
   return (
     <div>

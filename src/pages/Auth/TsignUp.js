@@ -36,6 +36,8 @@ function TeacherSignUp() {
     const toLogin = ()=>{
         navigation('/login')
       }
+
+      
   return (
     <div style={{height:'100%'}}>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>

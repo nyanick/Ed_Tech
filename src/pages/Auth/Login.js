@@ -15,11 +15,14 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';import { Link, useNavigate } from 'react-router-dom';
 import TModalSignUp from '../../components/Auth/Modal';
+import axios from 'axios';
 ;
 
 let image = require('../../assets/images/signin-image.jpg')
 
 function Login() {
+    const [email, setemail] = React.useState('')
+    const [pwd, setpwd] = React.useState('')
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -28,9 +31,21 @@ function Login() {
       event.preventDefault();
     };
      const navigate = useNavigate()
-    const login = ()=>{
+     
+    const login = async()=>{
         navigate('/')
+        // console.log(email,pwd);
+        // await axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/auth',
+        // {
+        //     email,pwd
+        // }).then(res=>{
+        //     console.log(res);
+            
+        // }).catch(err=>{
+        //     console.log("the error ",err);
+        // })
     }
+    
   return (
     <div style={{height:'100%'}}>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>
@@ -42,12 +57,13 @@ function Login() {
                 <InputLabel htmlFor="standard-adornment-password">User Name</InputLabel>
                 <Input
                     id="standard-adornment-password"
-                    type='text'
+                    type='email'
+                    value={email}
+                    onChange={e=>setemail(e.target.value)}
                     startAdornment={
                     <InputAdornment position='start'>
                         <IconButton
-                        aria-label="toggle password visibility"
-                        
+                        aria-label="toggle password visibility"    
                         >
                         <PersonIcon color='black' fontSize='15'/>
                         </IconButton>
@@ -61,6 +77,8 @@ function Login() {
                 <Input
                     id="standard-adornment-password"
                     type={showPassword ? 'text' : 'password'}
+                    value={pwd}
+                    onChange={e=>setpwd(e.target.value)}
                     startAdornment={
                     <InputAdornment position='start'>
                         <IconButton
