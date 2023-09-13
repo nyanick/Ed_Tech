@@ -91,7 +91,7 @@ function Login() {
                 <Grid item sx={12} md={6} xs={12} justifyContent={'center'} >
                     <img alt='nothing her' src={image} style={{display:'flex',marginLeft:'auto',marginRight:'auto',}}/>
                 {/* <Link>Create An Account</L> */}
-                <Typography style={{textAlign:'center',marginTop:10}}> Create An Account</Typography>
+                
                 </Grid>
             </Grid>
         </Paper>

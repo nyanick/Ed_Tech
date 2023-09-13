@@ -38,7 +38,7 @@ function NavBarCollapse (){
                         Home
                     </MenuItem>
                 </Link>
-                <Link href='/' underline="none" color="textPrimary">
+                <Link href='/subjects' underline="none" color="textPrimary">
                     <MenuItem>
                         Subjects
                     </MenuItem>
@@ -60,7 +60,7 @@ function NavBarCollapse (){
             <div sx={{width: "100%"}} id="appbar-collapse">
                 <Box sx={{display: {xs: 'none', sm: 'block', md: 'block'} }} >
             
-                    <Link  href='/' underline="none" color="textPrimary">
+                    <Link  href='/home' underline="none" color="textPrimary">
                         <ButtonStyledLink  color="inherit">         
                             <Typography sx={{ fontWeight: 420}} variant="body1"> 
                                 Home
@@ -69,7 +69,7 @@ function NavBarCollapse (){
                     </Link>
                     
 
-                    <Link href='/case-studies' underline="none" color="textPrimary">
+                    <Link href='/subjects' underline="none" color="textPrimary">
                         <ButtonStyledLink color="inherit">           
                             <Typography sx={{ fontWeight: 420}} variant="body1"> 
                                 Subjects

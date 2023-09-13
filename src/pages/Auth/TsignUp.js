@@ -19,7 +19,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
-
+import HomeIcon from '@mui/icons-material/Home';
 let image = require('../../assets/images/signup-image.jpg')
 
 function TeacherSignUp() {
@@ -45,7 +45,42 @@ function TeacherSignUp() {
                         <h1 style={{textAlign:'center',fontWeight:'bold'}}>Create Teachers Account</h1>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap',padding:5,gap:2 }}>
                     <FormControl sx={{  width: '100%' }} variant="standard">
-                <InputLabel htmlFor="standard-adornment-password">User Name</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">Address</InputLabel>
+                <Input
+                    id="standard-adornment-password"
+                    type='text'
+                    startAdornment={
+                    <InputAdornment position='start'>
+                        <IconButton
+                        aria-label="toggle password visibility"
+                        
+                        >
+                        <HomeIcon color='black' fontSize='15'/>
+                        </IconButton>
+                    </InputAdornment>
+                    }
+                />
+                </FormControl>
+                
+                <FormControl sx={{  width: '100%' }} variant="standard">
+                <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
+                <Input
+                    id="standard-adornment-password"
+                    type='email'
+                    startAdornment={
+                    <InputAdornment position='start'>
+                        <IconButton
+                        aria-label="toggle password visibility"
+                        
+                        >
+                        <EmailIcon color='black' fontSize='15'/>
+                        </IconButton>
+                    </InputAdornment>
+                    }
+                />
+                </FormControl>
+                    <FormControl sx={{  width: '100%' }} variant="standard">
+                <InputLabel htmlFor="standard-adornment-password">First Name</InputLabel>
                 <Input
                     id="standard-adornment-password"
                     type='text'

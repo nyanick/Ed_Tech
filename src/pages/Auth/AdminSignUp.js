@@ -17,7 +17,9 @@ import Checkbox from '@mui/material/Checkbox';import { Link } from 'react-router
 import TModalSignUp from '../../components/Auth/Modal';
 import EmailIcon from '@mui/icons-material/Email';
 import { useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 let image = require('../../assets/images/signup-image.jpg')
+
 
 function AdminSignUp() {
 
@@ -41,8 +43,9 @@ function AdminSignUp() {
                 
                         <h1 style={{textAlign:'center',fontWeight:'bold'}}>Create An Admin Account</h1>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap',padding:5,gap:2 }}>
+
                     <FormControl sx={{  width: '100%' }} variant="standard">
-                <InputLabel htmlFor="standard-adornment-password">User Name</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">Address</InputLabel>
                 <Input
                     id="standard-adornment-password"
                     type='text'
@@ -52,12 +55,13 @@ function AdminSignUp() {
                         aria-label="toggle password visibility"
                         
                         >
-                        <PersonIcon color='black' fontSize='15'/>
+                        <HomeIcon color='black' fontSize='15'/>
                         </IconButton>
                     </InputAdornment>
                     }
                 />
                 </FormControl>
+                
                 <FormControl sx={{  width: '100%' }} variant="standard">
                 <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
                 <Input
@@ -70,6 +74,24 @@ function AdminSignUp() {
                         
                         >
                         <EmailIcon color='black' fontSize='15'/>
+                        </IconButton>
+                    </InputAdornment>
+                    }
+                />
+                </FormControl>
+
+                <FormControl sx={{  width: '100%' }} variant="standard">
+                <InputLabel htmlFor="standard-adornment-password">User Name</InputLabel>
+                <Input
+                    id="standard-adornment-password"
+                    type='text'
+                    startAdornment={
+                    <InputAdornment position='start'>
+                        <IconButton
+                        aria-label="toggle password visibility"
+                        
+                        >
+                        <PersonIcon color='black' fontSize='15'/>
                         </IconButton>
                     </InputAdornment>
                     }
@@ -112,7 +134,7 @@ function AdminSignUp() {
                 <Grid item sx={12} md={6} xs={12} justifyContent={'center'} >
                     <img alt='nothing her' src={image} style={{display:'flex',marginLeft:'auto',marginRight:'auto',}}/>
                 {/* <Link>Create An Account</L> */}
-                <Typography style={{textAlign:'center',marginTop:10}}> Create An Account</Typography>
+                {/* <Typography style={{textAlign:'center',marginTop:10}}> Create An Account</Typography> */}
                 </Grid>
             </Grid>
         </Paper>

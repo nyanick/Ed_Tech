@@ -7,7 +7,7 @@ import { Card, CardContent } from '@mui/material';
 
 // import { makeStyles } from '@mui/styles';
 import { makeStyles } from '@mui/styles';
-import { Carear, studCources } from '../../data';
+import { studCources } from '../../data';
 import IZNavBar from '../../components/Header/IZNavBar';
 import Footer from '../../components/Footer/Footer';
 
@@ -20,33 +20,33 @@ import Footer from '../../components/Footer/Footer';
        },
      },
    });
-
-function StudDashboard() {
-  const classes = useStyles();
-
+function Subjects() {
+    const classes = useStyles();
   return (
     <div>
-   <IZNavBar/>
-    <div className='content'>
-      <div style={{textAlign:'center',fontSize:35,}}>
-        Welcome
-      </div>
-    </div>
-  <div style={{paddingTop:20}}>
-    <div style={{textAlign:'center'}}>
-        Build Your Carear
-    </div>
-    <Typography variant='h2' color={'#3ea7d5'} sx={{textAlign:'center'}}>
-        Featured Programmes
-    </Typography>
-
-    <div style={{marginBottom:20}}>
+    <IZNavBar/>
+     <div className='content'>
+       <div style={{textAlign:'center',fontSize:35,}}>
+         Welcome
+       </div>
+     </div>
+     <div style={{marginBottom:20}}>
        <Container style={{marginTop:15}} maxWidth='lg'>
+         <div style={{marginTop:30,marginBottom:30,paddingBottom:15,paddingTop:40,
+           color:'black',fontWeight:'400',fontSize:25
+         }}> {studCources.length} Subjects Registered </div>
          <Grid container spacing={5} rowSpacing={10}>
  
-           {Carear.map((item,id)=>(
+           {studCources.map((item,id)=>(
              <Grid item xs={12} md={6} lg={4} >
              <Card className={classes.card} sx={{ maxWidth: 400 }}>
+             <CardMedia
+                    component="img"
+                    alt="green iguana"
+                    height="150"
+                     style={{objectFit:'fill'}}
+                    image={item.image}
+                />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" style={{
                      textTransform:'capitalize'
@@ -54,22 +54,22 @@ function StudDashboard() {
                     {item.course}
                     </Typography>
                     <Typography style={{
-                     textTransform:'capitalize',
-                     fontSize:20
+                     textTransform:'capitalize'
                     }}>
-                     {item.date} :  {item.carte}
+                     {item.date}
                     </Typography>
                     <Typography style={{
                      textTransform:'capitalize'
                     }}>
-                    
+                     {item.carte}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                    {item.text}
+                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
                     </Typography>
                 </CardContent>
                 <CardActions> 
-                    <Button size="small">Enrol Now</Button>
+                    <Button size="small">Share</Button>
                     <Button size="small">Learn More</Button>
                 </CardActions>
              </Card>
@@ -79,10 +79,9 @@ function StudDashboard() {
          </Grid>
        </Container>
      </div>
-    </div>
-    <Footer/>
-  </div>
+     <Footer/>
+   </div>
   )
 }
 
-export default StudDashboard
+export default Subjects
