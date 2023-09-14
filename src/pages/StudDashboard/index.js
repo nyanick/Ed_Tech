@@ -29,7 +29,11 @@ function StudDashboard() {
 
   React.useEffect(()=>{
     const fetchData = async () => {
-      await axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/course')
+      await axios.get('http://edtech.eu-north-1.elasticbeanstalk.com/ed-tech/api/v1/course',{
+        headers:{
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
       .then(res=>{
         console.log(res.data);
         setData(res.data)

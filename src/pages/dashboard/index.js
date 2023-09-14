@@ -62,7 +62,7 @@ function HomePage() {
             </Menu>
           </div>
       </Sidebar>
-          <main style={{  marginLeft: "1rem",padding:10 }}>
+          <main style={{  marginLeft: "1rem",padding:10,alignSelf:'center', }}>
           {active === 'active' && <Home/>}
           {active === 'courses' && <Courses/>}
 
