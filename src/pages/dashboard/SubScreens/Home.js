@@ -50,7 +50,7 @@ function Home() {
       <h4 className="text-center">Welcome to the Dashboard</h4><br/>
       <div style={{marginBottom:20}}>
        <Container style={{marginTop:15}} maxWidth='lg'>
-         <Grid container spacing={5} rowSpacing={10} alignSelf={'center'}>
+         <Grid container spacing={5} rowSpacing={10} >
              <Grid item xs={12} md={6} lg={4} >
              <Card className={classes.card} sx={{ minWidth: 350 }}>
              <CardContent>
