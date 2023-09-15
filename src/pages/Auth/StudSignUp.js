@@ -22,51 +22,66 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Icon from '@mui/material/Icon';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
-// {
-//     "address": "marie",
-//     "email": "a@gmail.com"",
-//     "enrollmentYear": 2020,
-//     "firstName": "gael",
-//     "gender": "male",
-//     "graduationYear": 2024,
-//     "lastName": "gael",
-//     "major": "physics",
-//     "phone": "650292470",
-//     "pwd": "UBa19P0170@"
-//   }
+
 let image = require('../../assets/images/signup-image.jpg')
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
 
 function StudentSignUp() {
   const navigation = useNavigate()
+  const [error, setError] = React.useState('')
+    const [open, setOpen] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
   
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
-    const [Address,setAddress] = useState('')
+    const [address,setAddress] = useState('')
     const [email,setEmial] = useState('')
     const [enrolmentYear,setEnrolmentYear] = useState('')
     const [firstName,setfirstName] = useState('')
     const [gender,setgender] = useState('')
     const [gradYear,setGradYear] = useState('') 
-    const [lanstName,setLastName] = useState('')
+    const [lastName,setlastName] = useState('')
     const [major,setMejor] = useState('')
     const [phone,setPhone] = useState('')
-    const [password,setPassword] = useState('')
+    const [pwd,setpwd] = useState('')
 
   const toLogin = ()=>{
+    console.log(address,email,enrolmentYear,firstName,gender,gradYear,lastName,major,phone,pwd);
     axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/register/student',{
-        Address,email,enrolmentYear,firstName,gender,gradYear,lanstName,major,phone,password
+        address,email,enrolmentYear,firstName,gender,gradYear,lastName,major,phone,pwd
     }).then(res=>{
         console.log(res.status);
-        navigation('/login')
-    }).catch(error=>{
-        console.log('error is ',error);
-    })
-  }
+        localStorage.setItem('email',res.data.data.email)
+        console.log('data',res.data);
+        if(res.data.apiError){
+            setError(res.data.apiError.errorMessage)
+            setOpen(true);
+            }
+        else navigation('/otp')
+            }).catch(error=>{
+                console.log('error is ',error);
+            })
+        }
   return (
     <div style={{height:'100%'}}>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>
@@ -79,7 +94,7 @@ function StudentSignUp() {
                     <Input
                         id="standard-adornment-password"
                         type='text'
-                        value={Address}
+                        value={address}
                         onChange={(e)=>setAddress(e.target.value)}
                        
                     />
@@ -110,13 +125,20 @@ function StudentSignUp() {
                             ),
                         }}
                         >
-                    <MenuItem value="10">2019</MenuItem>
-                    <MenuItem value="10">2020</MenuItem>
-                    <MenuItem value="20">2021</MenuItem>
-                    <MenuItem value="10">2022</MenuItem>
+                    <MenuItem value="2019">2019</MenuItem>
+                    <MenuItem value="2020">2020</MenuItem>
+                    <MenuItem value="2021">2021</MenuItem>
+                    <MenuItem value="2022">2022</MenuItem>
                     </TextField>
                     </FormControl>
-
+                    <Stack spacing={2} sx={{ width: '100%' }}>
+                        
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
+                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                            {error}
+                            </Alert>
+                        </Snackbar>
+                        </Stack>
 
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
                     <InputLabel htmlFor="standard-adornment-password">First Name</InputLabel>
@@ -144,8 +166,8 @@ function StudentSignUp() {
                             ),
                         }}
                         >
-                    <MenuItem value="10">male</MenuItem>
-                    <MenuItem value="20">female</MenuItem>
+                    <MenuItem value="MALE">Male</MenuItem>
+                    <MenuItem value="FEMALE">Female</MenuItem>
                     </TextField>
                     </FormControl>
                
@@ -162,24 +184,23 @@ function StudentSignUp() {
                             <Icon>
                                 <ArrowDropDownIcon />
                             </Icon>
-                            ),
+                            )
                         }}
                         >
-                    <MenuItem value="10">2019</MenuItem>
-                    <MenuItem value="10">2020</MenuItem>
-                    <MenuItem value="20">2021</MenuItem>
-                    <MenuItem value="10">2022</MenuItem>
+                    <MenuItem value="2019">2019</MenuItem>
+                    <MenuItem value="2020">2020</MenuItem>
+                    <MenuItem value="2021">2021</MenuItem>
+                    <MenuItem value="2022">2022</MenuItem>
                     </TextField>
                     </FormControl>
               
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Last Name</InputLabel>
+                    <InputLabel htmlFor="standard-adornment-password">lastName</InputLabel>
                     <Input
                         id="standard-adornment-password"
-                        type='text'
-                        value={lanstName}
-                        onChange={e=>setLastName(e.target.value)}
-                        
+                        type='text' 
+                        value={lastName}
+                        onChange={e=>setlastName(e.target.value)}
                     />
                 </FormControl>
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
@@ -203,6 +224,26 @@ function StudentSignUp() {
                     />
                 </FormControl>
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
+                <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                <Input
+                    id="standard-adornment-password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={pwd}
+                    onChange={e=>setpwd(e.target.value)}
+                    endAdornment={
+                    <InputAdornment position='start'>
+                        <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                    </InputAdornment>
+                    }
+                />
+                </FormControl>
+                {/* <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
                     <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                     <Input
                         id="standard-adornment-password"
@@ -211,7 +252,7 @@ function StudentSignUp() {
                         onChange={e=>setPassword(e.target.value)}
                        
                     />
-                </FormControl>
+                </FormControl> */}
                 <FormGroup >
                     <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
                 </FormGroup>

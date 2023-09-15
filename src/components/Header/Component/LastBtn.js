@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 import styled from "@emotion/styled";   
 import '../NavStyles.css'
 import PersonIcon from '@mui/icons-material/Person';
+import { Logout } from "@mui/icons-material";
 
 function LastBtn (){
 
@@ -41,16 +42,10 @@ function LastBtn (){
                 </Link>
                 <Link href='/' underline="none" color="textPrimary">
                     <MenuItem>
-                        Courses
+                        Subjects
                     </MenuItem>
                 </Link>
-            
-                <Link href='/' underline="none" color="textPrimary">
-                    <MenuItem>
-                        Blog
-                    </MenuItem>
-                </Link>
-                <Link href='/' underline="none" color="textPrimary">
+                <Link href='/about' underline="none" color="textPrimary">
                     <MenuItem>
                         About
                     </MenuItem>
@@ -63,24 +58,16 @@ function LastBtn (){
 
 
 
-                    <Link href='/' underline="none" color="textPrimary">
-                            <PersonIcon/>
+                    <Link href='/login' underline="none" color="textPrimary">
+                            <Logout/>
                         {/* <ButtonStyledLink color="inherit">           
                         </ButtonStyledLink> */}
                     </Link>
                    
-                    <Link href='/login' underline="none" color="textPrimary">
-                        <ButtonStyledLink color="inherit">           
-                            <Typography sx={{ fontWeight: 420}} variant="body1"> 
-                                Login
-                            </Typography>
-                        </ButtonStyledLink>
-                    </Link>
-                   
-                    <Link href="/t-signUp" underline="none" color="textPrimary">
+                    <Link href="/login" underline="none" color="textPrimary">
                         <ButtonStyledLink color="inherit">          
                             <Typography sx={{ fontWeight: 420}} variant="body1"> 
-                                Register
+                                Logout
                             </Typography>
                         </ButtonStyledLink>
                     </Link>

@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Logo from '../../assets/images/13.jpeg';
 import { createTheme } from '@mui/material/styles';
 import LastBtn from './Component/LastBtn';
-import { Container } from '@mui/material';
+import { Container, Hidden } from '@mui/material';
 
 const theme = createTheme({
    
@@ -22,7 +22,9 @@ export default function IZNavBar() {
                         <Grid item xs={12} sm={6} md={10} lg={12}>
                             <Grid container direction="row" justifyContent='space-between' alignItems="center">
                                 <Grid item xs={12} sm={6} md={2} lg={4}>
+                                    <Hidden smDown>
                                     <Avatar sx={{width: 50, height: 50}} alt="Ed -Tech" src={Logo} />
+                                    </Hidden>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={9} lg={4}>
                                     <NavBarCollapse /> 

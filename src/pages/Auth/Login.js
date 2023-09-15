@@ -16,14 +16,36 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';import { Link, useNavigate } from 'react-router-dom';
 import TModalSignUp from '../../components/Auth/Modal';
 import axios from 'axios';
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 ;
 
 let image = require('../../assets/images/signin-image.jpg')
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
 function Login() {
     const [email, setemail] = React.useState('')
     const [pwd, setpwd] = React.useState('')
+    const [error, setError] = React.useState('')
     const [showPassword, setShowPassword] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+
+//   const handleClick = () => {
+//     setOpen(true);
+//   };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
   
@@ -33,17 +55,32 @@ function Login() {
      const navigate = useNavigate()
      
     const login = async()=>{
-        navigate('/')
-        // console.log(email,pwd);
-        // await axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/auth',
-        // {
-        //     email,pwd
-        // }).then(res=>{
-        //     console.log(res);
-            
-        // }).catch(err=>{
-        //     console.log("the error ",err);
-        // })
+        // navigate('/')
+        console.log(email,pwd);
+        await axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/auth',
+        {
+            email,pwd
+        }).then(res=>{
+            console.log(res.data);
+            // console.log('profil',res.data.data.user.profile);
+            if(res.data.apiError){
+                    setError(res.data.apiError.errorMessage)
+                    setOpen(true);
+            }
+            else if(res.data.apiSuccess === 200){
+                if(res.data.data.user.profile ==="student"){
+                    navigate('/home')
+                }else{
+                    navigate('/')
+                }
+            }
+            localStorage.setItem('email',res.data.user.email)
+            localStorage.setItem('gender',res.data.user.gender)
+            localStorage.setItem('phone',res.data.user.phone)
+            localStorage.setItem('profile',res.data.user.profile)
+        }).catch(err=>{
+            console.log("the error ",err);
+        })
     }
     
   return (
@@ -54,7 +91,7 @@ function Login() {
                         <h1 style={{textAlign:'center',fontWeight:'bold'}}>Login</h1>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap',padding:5,gap:2 }}>
                     <FormControl sx={{  width: '100%' }} variant="standard">
-                <InputLabel htmlFor="standard-adornment-password">User Name</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
                 <Input
                     id="standard-adornment-password"
                     type='email'
@@ -91,6 +128,7 @@ function Login() {
                     </InputAdornment>
                     }
                 />
+               
                 </FormControl>
                 <FormGroup >
                     <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
@@ -98,6 +136,15 @@ function Login() {
                
 
                     </Box>
+
+                    <Stack spacing={2} sx={{ width: '100%' }}>
+    
+                            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
+                                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                                {error}
+                                </Alert>
+                            </Snackbar>
+                            </Stack>
                 <Stack spacing={2} ml={5} mr={5} >
                     <Button onClick={login} variant="contained">Login</Button>
                 </Stack>

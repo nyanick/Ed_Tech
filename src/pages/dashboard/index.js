@@ -13,6 +13,7 @@ import Home from './SubScreens/Home';
 import Courses from './SubScreens/Courses';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from 'react-bootstrap';
+import Contacts from './SubScreens/Contact';
 
 function HomePage() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl, } = useProSidebar();
@@ -49,10 +50,8 @@ function HomePage() {
             onClick={()=>setActive('active')}
             icon={<HomeOutlinedIcon />}>Dashboard</MenuItem>
             <MenuItem onClick={()=>setActive('courses')} icon={<PeopleOutlinedIcon />}>Courses</MenuItem>
-            <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem icon={<ReceiptOutlinedIcon 
+            <MenuItem onClick={()=>setActive('contacts')} icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
             
-            />}>Profile</MenuItem>
           </Menu>
           <div>
             <Menu>
@@ -65,8 +64,9 @@ function HomePage() {
           <main style={{  marginLeft: "1rem",padding:10 }}>
           {active === 'active' && <Home/>}
           {active === 'courses' && <Courses/>}
+          {active === 'contacts' && <Contacts/>}
 
-          <Button onClick={students}> Updates</Button>
+          {/* <Button onClick={students}> Updates</Button> */}
         </main>
   
       </div>

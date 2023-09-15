@@ -25,25 +25,7 @@ import axios from 'axios';
 function StudDashboard() {
   const classes = useStyles();
 
-  const [data,setData] = React.useState([])
-
-  React.useEffect(()=>{
-    const fetchData = async () => {
-      await axios.get('http://edtech.eu-north-1.elasticbeanstalk.com/ed-tech/api/v1/course',{
-        headers:{
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
-      .then(res=>{
-        console.log(res.data);
-        setData(res.data)
-        console.log(data);
-      }).catch(error=>{
-        console.log("axios aaa",error);
-      })
-    }
-    fetchData()
-  },[])
+  
 
   return (
     <div>

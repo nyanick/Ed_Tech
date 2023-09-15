@@ -1,0 +1,17 @@
+.chart-container {
+    width: 1240px;
+    height: 400px; 
+    margin: 0 auto; 
+  }
+
+  @media (max-width: 768px) {
+    .chart-container {
+      height: 300px;
+    }
+  }
+  @media (max-width: 500px) {
+    .chart-container {
+      height: 200px;
+      width: 350px;
+    }
+  }
