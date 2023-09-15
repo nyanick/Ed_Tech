@@ -51,14 +51,13 @@ function OtpInputs() {
     <React.Fragment>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ textAlign: 'center' }}>
-        <OtpInput
-          value={otp}
-          onChange={setOtp}
-          numInputs={6}
-          separator={<span>-ss</span>}
-          inputStyle={{ width: '60px', height: '60px', fontSize: '24px' }}
-          renderInput={(props) => <input {...props} />}
-        />
+      <OtpInput
+      value={otp}
+      onChange={setOtp}
+      numInputs={4}
+      renderSeparator={<span>-</span>}
+      renderInput={(props) => <input {...props} />}
+    />
         <Box>
             <Button onClick={submit} variant="contained"
             style={{
@@ -74,14 +73,14 @@ function OtpInputs() {
       </div>
       
     </div>
-    <Stack spacing={2} sx={{ width: '100%' }}>
+    {/* <Stack spacing={2} sx={{ width: '100%' }}>
     
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
         {error}
         </Alert>
     </Snackbar>
-    </Stack>
+    </Stack> */}
     </React.Fragment>
   );
 }

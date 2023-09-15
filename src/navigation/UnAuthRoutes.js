@@ -6,6 +6,7 @@ import AdminSignUp from '../pages/Auth/AdminSignUp';
 import TeacherSignUp from '../pages/Auth/TsignUp';
 import StudentSignUp from '../pages/Auth/StudSignUp';
 import OTPInput from "react-otp-input";
+import OtpScreen from "../pages/Auth/OtpScreen";
 
 function UnAuthRoutes() {
     return (
@@ -14,7 +15,7 @@ function UnAuthRoutes() {
             <Route path='a-signUp'element={<AdminSignUp/>} />
             <Route path='t-signUp'element={<TeacherSignUp/>} />
             <Route path='s-signUp'element={<StudentSignUp/>} />
-            <Route path='otp' element={<OTPInput/>} />
+            <Route path='otp' element={<OtpScreen/>} />
         </Routes>
     );
 }

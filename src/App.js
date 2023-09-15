@@ -5,6 +5,7 @@ import { ProSidebarProvider } from 'react-pro-sidebar';
 import UnAuthRoutes from './navigation/UnAuthRoutes';
 import AuthRoutes from './navigation/AuthRoutes';
 import store from './redux/setup/store';
+import OtpScreen from './pages/Auth/OtpScreen';
 
 
 
@@ -20,9 +21,7 @@ function App() {
           <AuthRoutes />
         </BrowserRouter>
       </ProSidebarProvider>
-      {/* <NavBarCollapse/> */}
-      {/* <IZNavBar/> */}
-      {/* <StudDashboard/> */}
+      {/* <OtpScreen/> */}
     </Provider>
   );
 }
