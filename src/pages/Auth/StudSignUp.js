@@ -27,7 +27,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-
 let image = require('../../assets/images/signup-image.jpg')
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -38,16 +37,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function StudentSignUp() {
   const navigation = useNavigate()
   const [error, setError] = React.useState('')
-    const [open, setOpen] = React.useState(false);
-    const [showPassword, setShowPassword] = React.useState(false);
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpen(false);
-      };
+  const [showPassword, setShowPassword] = React.useState(false);
+   
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
   
@@ -64,6 +55,19 @@ function StudentSignUp() {
     const [major,setMejor] = useState('')
     const [phone,setPhone] = useState('')
     const [pwd,setpwd] = useState('')
+const [open, setOpen] = React.useState(false);
+
+//   const handleClick = () => {
+//     setOpen(true);
+//   };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const toLogin = ()=>{
     console.log(address,email,enrolmentYear,firstName,gender,gradYear,lastName,major,phone,pwd);
@@ -71,17 +75,22 @@ function StudentSignUp() {
         address,email,enrolmentYear,firstName,gender,gradYear,lastName,major,phone,pwd
     }).then(res=>{
         console.log(res.status);
-        localStorage.setItem('email',res.data.data.email)
         console.log('data',res.data);
         if(res.data.apiError){
             setError(res.data.apiError.errorMessage)
-            setOpen(true);
-            }
-        else navigation('/otp')
-            }).catch(error=>{
-                console.log('error is ',error);
-            })
+            setOpen(true)
         }
+        else if(res.data.apiSuccess === 201){
+            localStorage.setItem('email',res.data.data.email)
+            navigation('/otp')
+        }
+        
+        // navigation('/otp')
+    }).catch(error=>{
+        console.log('error is ',error);
+    })
+  }
+  console.log("nbaba",error);
   return (
     <div style={{height:'100%'}}>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>

@@ -13,20 +13,21 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';import { Link, useNavigate } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';
+import { Link, useNavigate } from 'react-router-dom';
 import TModalSignUp from '../../components/Auth/Modal';
 import axios from 'axios';
 // import Stack from '@mui/material/Stack';
 // import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-;
 
-let image = require('../../assets/images/signin-image.jpg')
+let image = require('../../assets/images/signup-image.jpg')
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
+
 
 function Login() {
     const [email, setemail] = React.useState('')
@@ -82,6 +83,7 @@ function Login() {
             console.log("the error ",err);
         })
     }
+    // console.log('bla',error);
     
   return (
     <div style={{height:'100%'}}>

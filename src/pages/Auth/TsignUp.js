@@ -13,18 +13,23 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';import { Link } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';
 import TModalSignUp from '../../components/Auth/Modal';
-import EmailIcon from '@mui/icons-material/Email';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Icon from '@mui/material/Icon';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useNavigate } from 'react-router-dom';
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 let image = require('../../assets/images/signup-image.jpg')
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
 function TeacherSignUp() {
   const navigation = useNavigate()
@@ -43,6 +48,19 @@ function TeacherSignUp() {
     const [phone,setPhone] = useState('')
     const [pwd,setpwd] = useState('')
     const [error,setError] = useState('')
+    const [open, setOpen] = React.useState(false);
+
+//   const handleClick = () => {
+//     setOpen(true);
+//   };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const toLogin = ()=>{
     console.log(address,email,firstName,gender,lastName,phone,pwd);
@@ -52,13 +70,8 @@ function TeacherSignUp() {
         console.log(res.status);
         console.log('data',res.data);
         if(res.data.apiError){
-            if (res.data.apiError.errorCode === 400){
-                setError(res.data.apiError.errorMessage)
-                
-            }
-            else if(res.data.apiError.errorCode === 401){
-                setError('Incorrect Credentials')
-            } 
+            setError(res.data.apiError.errorMessage)
+            setOpen(true)
         }
         else if(res.data.apiSuccess === 201){
             localStorage.setItem('email',res.data.data.email)
@@ -70,9 +83,17 @@ function TeacherSignUp() {
         console.log('error is ',error);
     })
   }
-  console.log(error);
+  console.log("nbaba",error);
   return (
     <div style={{height:'100%'}}>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+    
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+        {error}
+        </Alert>
+    </Snackbar>
+    </Stack>
         <Paper sx={{margin:'10%',backgroundColor:'#FFF'}}>
         <Grid container style={{justifyContent:'center',padding:'8%',alignItems:'center'}}>
                 <Grid item sx={12} md={6} xs={12}>

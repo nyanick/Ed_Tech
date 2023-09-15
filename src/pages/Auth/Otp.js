@@ -4,7 +4,6 @@ import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Stack from '@mui/material/Stack';
-// import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -19,20 +18,18 @@ function OtpInputs() {
   const navigate = useNavigate();
   const [error, setError] = React.useState('')
   const [open, setOpen] = React.useState(false);
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-
-    setOpen(false);
-  };
-
-    // const handleClickShowPassword = () => setShowPassword((show) => !show);
+  //   const handleClick = () => {
+  //     setOpen(true);
+  //   };
   
-    // const handleMouseDownPassword = (event) => {
-    //   event.preventDefault();
-    // };
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
 
   const email = localStorage.getItem('email')
   console.log('emaila',email);
@@ -46,11 +43,12 @@ function OtpInputs() {
       }
       else navigate('/login')
     }).catch(error=>{
-      console.log(error);
+      console.log('axios',error);
     })
   }
 
   return (
+    <React.Fragment>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ textAlign: 'center' }}>
         <OtpInput
@@ -74,7 +72,9 @@ function OtpInputs() {
             >Submit</Button>
         </Box>
       </div>
-      <Stack spacing={2} sx={{ width: '100%' }}>
+      
+    </div>
+    <Stack spacing={2} sx={{ width: '100%' }}>
     
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
@@ -82,7 +82,7 @@ function OtpInputs() {
         </Alert>
     </Snackbar>
     </Stack>
-    </div>
+    </React.Fragment>
   );
 }
 
