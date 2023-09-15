@@ -9,7 +9,7 @@ import StudentSignUp from '../pages/Auth/StudSignUp';
 function UnAuthRoutes() {
     return (
         <Routes>
-             <Route path='login'element={<Login/>} />
+            <Route path='/'element={<Login/>} />
             <Route path='a-signUp'element={<AdminSignUp/>} />
             <Route path='t-signUp'element={<TeacherSignUp/>} />
             <Route path='s-signUp'element={<StudentSignUp/>} />

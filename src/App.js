@@ -6,14 +6,18 @@ import UnAuthRoutes from './navigation/UnAuthRoutes';
 import AuthRoutes from './navigation/AuthRoutes';
 import store from './redux/setup/store';
 
+
+
 function App() {
-  const [isSigning] = useState(true);
+  const [isSigning] = useState(false);
+  
 
   return (
     <Provider store={store}>
       <ProSidebarProvider>
         <BrowserRouter>
-            <AuthRoutes />
+          <UnAuthRoutes />
+          <AuthRoutes />
         </BrowserRouter>
       </ProSidebarProvider>
       {/* <NavBarCollapse/> */}

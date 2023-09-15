@@ -14,11 +14,7 @@ import OtpInput from '../pages/Auth/Otp';
 export default function AuthRoutes() {
     return (
         <Routes>
-             <Route path='login'element={<Login/>} />
-            <Route path='a-signUp'element={<AdminSignUp/>} />
-            <Route path='t-signUp'element={<TeacherSignUp/>} />
-            <Route path='s-signUp'element={<StudentSignUp/>} />
-            <Route path='/' element={<Dashboard />} />
+            <Route path='Teacher' element={<Dashboard />} />
             <Route path='home' element={<Home />} />
             <Route path='a-students' element={<AboutStudents />} />
             <Route path='subjects' element={<Subjects />} />

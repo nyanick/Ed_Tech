@@ -72,7 +72,7 @@ function Login() {
                 if(res.data.data.user.profile ==="student"){
                     navigate('/home')
                 }else{
-                    navigate('/')
+                    navigate('/Teacher')
                 }
             }
             localStorage.setItem('email',res.data.user.email)
