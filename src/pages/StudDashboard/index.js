@@ -40,7 +40,7 @@ function StudDashboard() {
         Build Your Carear
     </div>
     <Typography variant='h2' color={'#3ea7d5'} sx={{textAlign:'center'}}>
-        Featured Programmes
+    Student Dashboard
     </Typography>
 
     <div style={{marginBottom:20}}>

@@ -7,6 +7,9 @@ import IZNavBar from '../../components/Header/IZNavBar';
 import Footer from '../../components/Footer/Footer';
 import { Image } from '@mui/icons-material';
 
+const learning = require('../../assets/images/learning.avif')
+const land = require('../../assets/images/land.jpeg')
+
    const useStyles = makeStyles({
      card: {
        transition: 'transform 0.3s, box-shadow 0.3s',
@@ -42,28 +45,27 @@ function AboutStudents() {
             Ed-Technologies
           </Typography>
           <Typography >
-          Ed-Technologies is a distinctive anglo-saxon university with future international reputation for higher standards of achievements and innovations in all areas of professionalism, arts, sciences and technology. If you are looking for a life-changing experience that will equip you with the knowledge and skills you will need to meet the future with confidence, we are sure that you will find it in Ed-tech. As a graduate or postgraduate student in Ed-Tech, you will study in modern surroundings that boast exceptionally well-equipped studios, workshops and facilities.
-          </Typography>
+          In the midst of Pakistan's diverse heritage
+          lies an unwavering quest for knowledge. At Ed-Tech, we're passionate about
+          fostering this quest by making A Levels education both accessible and
+          affordable. Merging top-tier content with the latest e-learning technologies, we
+          aim to democratise quality education, ensuring every Pakistani student,
+          irrespective of their background, is equipped for a brighter future. As a venture
+          deeply rooted in the Pakistani ethos, Ed-Tech promises to champion the
+          dreams and aspirations of our nation's youth, reshaping our educational
+          landscape one lesson at a time.  </Typography>
          </Grid>
          <Grid item xs={12} md={6} lg={6} >
-          <img src='https://www.uniba.cm/frontend/images/img1.jpg'
+          <img src={learning}
           alt="...nothing here to shows" style={{height:'100%',width:'100%'}} />
          </Grid>
         </Grid>
 
         <Grid container spacing={10}justifyContent={'space-between'} alignItems={'center'} mt={8}>
 
-         <Grid item xs={12} md={6} lg={6} >
-          <img src='https://www.uniba.cm/frontend/images/img1.jpg'
-          alt="...nothing here to shows" style={{height:'70%',width:'80%'}} />
-         </Grid>
-         <Grid item xs={12} md={6} lg={6} >
-          <Typography variant='h5' gutterBottom>
-            Founding
-          </Typography>
-          <Typography >
-          Ed-Technologies is a distinctive anglo-saxon university with future international reputation for higher standards of achievements and innovations in all areas of professionalism, arts, sciences and technology. If you are looking for a life-changing experience that will equip you with the knowledge and skills you will need to meet the future with confidence, we are sure that you will find it in Ed-tech. As a graduate or postgraduate student in Ed-Tech, you will study in modern surroundings that boast exceptionally well-equipped studios, workshops and facilities.
-          </Typography>
+         <Grid item xs={12} md={12} lg={12} >
+          <img src={land}
+          alt="...nothing here to shows" style={{height:'70%',width:'100%'}} />
          </Grid>
         </Grid>
       </Container>

@@ -2,13 +2,8 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import Home from '../pages/StudDashboard';
-import Login from '../pages/Auth/Login';
-import AdminSignUp from '../pages/Auth/AdminSignUp';
-import TeacherSignUp from '../pages/Auth/TsignUp';
-import StudentSignUp from '../pages/Auth/StudSignUp';
 import AboutStudents from '../pages/About';
 import Subjects from '../pages/StudDashboard/Subjects';
-import OtpInput from '../pages/Auth/Otp';
 
 
 export default function AuthRoutes() {
@@ -18,7 +13,6 @@ export default function AuthRoutes() {
             <Route path='home' element={<Home />} />
             <Route path='a-students' element={<AboutStudents />} />
             <Route path='subjects' element={<Subjects />} />
-            <Route path='otp' element={<OtpInput />} />
         </Routes>
     )
 }
