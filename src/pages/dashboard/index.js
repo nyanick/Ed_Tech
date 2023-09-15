@@ -44,13 +44,15 @@ function HomePage() {
               style={{ textAlign: "center" }}
             >
               {" "}
-              <h2>Teacher</h2>
+              <h2>
+                {localStorage.getItem("profile") == 'teacher' ? 'Teacher' : 'Admin'}
+                </h2>
             </MenuItem>
             <MenuItem
             onClick={()=>setActive('active')}
             icon={<HomeOutlinedIcon />}>Dashboard</MenuItem>
             <MenuItem onClick={()=>setActive('courses')} icon={<PeopleOutlinedIcon />}>Courses</MenuItem>
-            <MenuItem onClick={()=>setActive('contacts')} icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
+            <MenuItem onClick={()=>setActive('contacts')} icon={<ContactsOutlinedIcon />}>Students</MenuItem>
             
           </Menu>
           <div>

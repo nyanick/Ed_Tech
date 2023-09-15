@@ -35,13 +35,12 @@ function Subjects() {
     const fetchData = async () => {
       await axios.get('http://edtech.eu-north-1.elasticbeanstalk.com/ed-tech/api/v1/course',{
         headers:{
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Authorization' : `Bearer ${localStorage.getItem("token")}`
         }
       })
       .then(res=>{
-        // console.log(res.data.content);
         setData(res.data.content)
-        // console.log('addd');
       }).catch(error=>{
         console.log("axios aaa",error);
       })
@@ -64,7 +63,7 @@ function Subjects() {
          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:30,marginBottom:30,paddingBottom:15,paddingTop:40,}}>
          <div style={{
            color:'black',fontWeight:'400',fontSize:25
-         }}> {data.length} Subjects Registered </div>
+         }}> {data.length} Courses  </div>
          <div>
          <FormControl sx={{ width: 340,marginTop:3 }} variant="standard">
           <InputLabel id="category-label">Category</InputLabel>

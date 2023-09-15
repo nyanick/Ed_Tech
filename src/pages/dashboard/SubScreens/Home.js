@@ -22,26 +22,55 @@ const useStyles = makeStyles({
 function Home() {
   const classes = useStyles();
   const [activeUsers,setActiveUsers] = useState('')
-  const [completionRate,setCompletionRate] = useState('')
-  const [course,setCourse] = useState('')
+  const [totalStudents,setTotalStudents] = useState('')
+  const [completionRate,setCompletionRate] = useState([]);
+  const [course,setCourse] = useState([]);
   
 
   const graphData =()=>{
-    axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/course/teacher/2')
+    axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/course/teacher/2',{
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+        'Authorization' : `Bearer ${localStorage.getItem("token")}`
+      }
+    })
     .then(res=>{
-      console.log(res.data[0].course.title);
-      setCompletionRate(res.data[0].completionRate)
-      setCourse(res.data[0].course.title)
+      if(res.data){
+        let name = res.data.map(o=>o.course.title);
+        let completionRate = res.data.map(o=>o.completionRate);
+        setCompletionRate(name)
+        setCourse(completionRate)
+      }
     }).catch(err=>{
       console.log(err);
     })
   }
 
   const active = () =>{
-    axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/users/active-sessions')
+    axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/users/active-sessions',{
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+        'Authorization' : `Bearer ${localStorage.getItem("token")}`
+      }
+    })
     .then(res=>{
-      console.log(res.data);
       setActiveUsers(res.data)
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  const getTotalStudents = () =>{
+    axios.get('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/users/students',{
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+        'Authorization' : `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+    .then(res=>{
+      if(res.data && res.data.data){
+        setTotalStudents(res.data.data.length)
+      }
     }).catch(error=>{
       console.log(error);
     })
@@ -50,14 +79,15 @@ function Home() {
   useEffect(()=>{
     active()
     graphData()
+    getTotalStudents()
   },[])
 
   const chartData = {
-    labels: ['Red', course, 'Blue','yam'],
+    labels: completionRate ,
     datasets: [
       {
-        label: 'Popularity of colours',
-        data: [55, completionRate, 96,78],
+        label: 'Completion Rates of Courses',
+        data: course,
         backgroundColor: "rgba(7, 105, 204, 0.2)",
          borderColor: "#085aa1",
          borderWidth: 2,
@@ -97,7 +127,7 @@ function Home() {
                     <Typography gutterBottom variant="h5" component="div" style={{
                      textTransform:'capitalize',textAlign:'center'
                     }}>
-                    Total Number Of Users
+                    Total Number Of Students
                     </Typography>
                     <Box display="flex" justifyContent="center">
                       <AccessibilityIcon />
@@ -118,7 +148,7 @@ function Home() {
                     <Typography gutterBottom variant="h5" component="div" style={{
                      textTransform:'capitalize',textAlign:'center'
                     }}>
-                    10
+                    {totalStudents}
                     </Typography>
                 </CardContent>
              </Card>
@@ -129,7 +159,7 @@ function Home() {
                     <Typography gutterBottom variant="h5" component="div" style={{
                      textTransform:'capitalize',textAlign:'center'
                     }}>
-                    Total Number Of active Users
+                    Total Number Of active Students
                     </Typography>
                     <Box display="flex" justifyContent="center">
                       <AccessibilityIcon />

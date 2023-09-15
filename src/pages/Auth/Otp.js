@@ -32,16 +32,31 @@ function OtpInputs() {
     };
 
   const email = localStorage.getItem('email')
-  console.log('emaila',email);
 
   const submit = () =>{
-    axios.get(`http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/register/verification/${email}/${otp}`).then(res=>{
-      console.log(res.data);
+    axios.get(`http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/register/verification/${email}/${otp}`,{
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+        'Authorization' : `Bearer ${localStorage.getItem("token")}`
+      }
+    }).then(res=>{
       if(res.data.apiError){
         setError(res.data.apiError.errorMessage)
         setOpen(true);
       }
-      else navigate('/login')
+      else {
+        localStorage.setItem('token',res.data.data.token)
+        localStorage.setItem('email',res.data.data.user.email)
+        localStorage.setItem('gender',res.data.data.user.gender)
+        localStorage.setItem('phone',res.data.data.user.phone)
+        localStorage.setItem('profile',res.data.data.user.profile)
+         if(res.data.data.user.profile != "student" ){
+            navigate('/Teacher')
+         }
+         else{
+            navigate('/home')
+         }
+      }
     }).catch(error=>{
       console.log('axios',error);
     })

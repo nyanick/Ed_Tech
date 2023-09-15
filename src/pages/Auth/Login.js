@@ -61,9 +61,7 @@ function Login() {
         await axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/auth',
         {
             email,pwd
-        }).then(res=>{
-            console.log(res.data);
-            // console.log('profil',res.data.data.user.profile);
+        },).then(res=>{
             if(res.data.apiError){
                     setError(res.data.apiError.errorMessage)
                     setOpen(true);
@@ -75,6 +73,7 @@ function Login() {
                     navigate('/Teacher')
                 }
             }
+            localStorage.setItem('token',res.data.token)
             localStorage.setItem('email',res.data.user.email)
             localStorage.setItem('gender',res.data.user.gender)
             localStorage.setItem('phone',res.data.user.phone)

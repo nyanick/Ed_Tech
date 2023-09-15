@@ -39,39 +39,34 @@ export const studCources = [
 
 export const Carear = [
     {
-        date:'Duration',
-        course:'Bsc In Artificial Inteligence',
-        carte:'8 months',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
+        "date": "Duration",
+        "course": "A Level Biology",
+        "carte": "2 months",
+        "text": "A Level Biology course covering topics such as reproduction, nutrition, and other related matters."
     },
     {
-        date:'Duration',
-        course:'Bsc In Data Analysis',
-        carte:'6 months',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
+        "date": "Duration",
+        "course": "A Level Chemistry",
+        "carte": "3 months",
+        "text": "A Level Chemistry course covering various chemical principles, reactions, and applications."
     },
     {
-        date:'Duration',
-        course:'Front End Development',
-        carte:'1 year',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
+        "date": "Duration",
+        "course": "A Level Physics",
+        "carte": "2 months",
+        "text": "A Level Physics course focusing on principles of physics, mechanics, and electromagnetism."
     },
     {
-        date:'Duration',
-        course:'Backend Development',
-        carte:'8 months',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
+        "date": "Duration",
+        "course": "A Level Mathematics",
+        "carte": "1 month",
+        "text": "A Level Mathematics course covering topics such as calculus, algebra, and geometry."
     },
     {
-        date:'Duration',
-        course:'Bsc In Data Science',
-        carte:'8 months',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
-    },
-    {
-        date:'Duration',
-        course:'Bsc In Algorithm And Complexity',
-        carte:'8 months',
-        text:'In this project, students will build an AI-powered color detection app that can identify the color of an image. They will use the Color Recognition dataset available on Kaggle and OpenCV in Python to create the app.'
-    },
+        "date": "Duration",
+        "course": "A Level Computer Science",
+        "carte": "1 month",
+        "text": "A Level Computer Science covering programming, algorithms, and software development concepts."
+    }
+    
 ]

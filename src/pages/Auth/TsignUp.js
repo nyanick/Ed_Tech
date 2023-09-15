@@ -63,12 +63,14 @@ function TeacherSignUp() {
   };
 
   const toLogin = ()=>{
-    console.log(address,email,firstName,gender,lastName,phone,pwd);
     axios.post('http://edtech.eu-north-1.elasticbeanstalk.com:80/ed-tech/api/v1/register/teacher',{
         address,email,firstName,gender,lastName,phone,pwd
-    }).then(res=>{
-        console.log(res.status);
-        console.log('data',res.data);
+    },{
+        headers:{
+          'Access-Control-Allow-Origin': '*',
+          'Authorization' : `Bearer ${localStorage.getItem("token")}`
+        }
+      }).then(res=>{
         if(res.data.apiError){
             setError(res.data.apiError.errorMessage)
             setOpen(true)
@@ -83,7 +85,6 @@ function TeacherSignUp() {
         console.log('error is ',error);
     })
   }
-  console.log("nbaba",error);
   return (
     <div style={{height:'100%'}}>
         <Stack spacing={2} sx={{ width: '100%' }}>
@@ -99,33 +100,25 @@ function TeacherSignUp() {
                 <Grid item sx={12} md={6} xs={12}>
                     <h1 style={{textAlign:'center',fontWeight:'bold'}}>Create A Teacher Account</h1>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap',padding:5,gap:2 }}>
-                    <FormControl sx={{  width: '100%' }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Address</InputLabel>
+
+                    <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
+                        <InputLabel htmlFor="standard-adornment-password">First Name</InputLabel>
+                        <Input
+                            id="standard-adornment-password"
+                            type= 'text' 
+                            value={firstName}
+                            onChange={e=>setfirstName(e.target.value)}
+                        
+                        />
+                    </FormControl>
+
+                    <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
+                    <InputLabel htmlFor="standard-adornment-password">Last Name</InputLabel>
                     <Input
                         id="standard-adornment-password"
-                        type='text'
-                        value={address}
-                        onChange={(e)=>setAddress(e.target.value)}
-                       
-                    />
-                    </FormControl>
-                    <FormControl sx={{  width: '100%' }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
-                    <Input
-                    id="standard-adornment-password"
-                    type='email'
-                    value={email}
-                    onChange={e=>setEmial(e.target.value)}
-                />
-                    </FormControl>
-                <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">First Name</InputLabel>
-                    <Input
-                        id="standard-adornment-password"
-                        type= 'text' 
-                        value={firstName}
-                        onChange={e=>setfirstName(e.target.value)}
-                       
+                        type='text' 
+                        value={lastName}
+                        onChange={e=>setlastName(e.target.value)}
                     />
                 </FormControl>
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
@@ -148,29 +141,42 @@ function TeacherSignUp() {
                     <MenuItem value="FEMALE">Female</MenuItem>
                     </TextField>
                     </FormControl>
-               
-               
-              
-                <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">lastName</InputLabel>
-                    <Input
-                        id="standard-adornment-password"
-                        type='text' 
-                        value={lastName}
-                        onChange={e=>setlastName(e.target.value)}
-                    />
-                </FormControl>
-              
-                <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Phone</InputLabel>
+
+                    <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
+                        <InputLabel htmlFor="standard-adornment-password">Phone</InputLabel>
+                        <Input
+                            id="standard-adornment-password"
+                            type='text'
+                            value={phone}
+                            onChange={e=>setPhone(e.target.value)}
+                            
+                        />
+                    </FormControl>
+
+                    <FormControl sx={{  width: '100%' }} variant="standard">
+                    <InputLabel htmlFor="standard-adornment-password">Address</InputLabel>
                     <Input
                         id="standard-adornment-password"
                         type='text'
-                        value={phone}
-                        onChange={e=>setPhone(e.target.value)}
-                        
+                        value={address}
+                        onChange={(e)=>setAddress(e.target.value)}
+                       
                     />
-                </FormControl>
+                    </FormControl>
+                    <FormControl sx={{  width: '100%' }} variant="standard">
+                    <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
+                    <Input
+                    id="standard-adornment-password"
+                    type='email'
+                    value={email}
+                    onChange={e=>setEmial(e.target.value)}
+                />
+                    </FormControl>
+               
+                
+               
+            
+                
                 <FormControl sx={{ width: '100%',marginTop:3 }} variant="standard">
                 <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                 <Input
